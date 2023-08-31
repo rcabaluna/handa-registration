@@ -11,7 +11,8 @@
                                     <img class="img-fluid" src="<?=base_url('assets/images/logo/handa-logo-black.png')?>">
                                 </div>
                                 <div class="mt-3 col-12">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolorem unde, nihil odio rerum qui harum molestias numquam odit corrupti ea molestiae eveniet dicta, corporis nemo exercitationem! Excepturi, pariatur cum.</p>
+                                <p>
+                                Thank you for registering for HANDA Pilipinas 2023 Mindanao Leg! Your participation is invaluable in driving the success of this event. We're excited to have you join us in promoting sustainable communities. To stay updated on event details and receive important announcements, please scan the QR code below. Your dedication is inspiring positive change!</p>
                                     <p class="text-center">Please download the QR code and present it to the registration booth.</p>
                                 </div>
                                 <div class="col-md-12">
