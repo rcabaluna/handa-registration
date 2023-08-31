@@ -42,4 +42,21 @@ class RegistrationModel extends Model
         return $this->db->insertID();
     }
 
+    public function get_all_data($tablename){
+
+        $builder = $this->db->table($tablename);
+        $query   = $builder->get();
+
+        return $query->getResultArray();
+    }
+
+    public function get_data_where($tablename,$param){
+
+        $builder = $this->db->table($tablename);
+        $builder->where($param);
+        $query   = $builder->get();
+
+        return $query->getRowArray();
+    }
+
 }

@@ -20,59 +20,59 @@ class Register extends BaseController
         return view('registration-form');
     }
 
-    public function registerProccess(){
+    // public function registerProccess(){
 
-        $data = $this->request->getPost();
+    //     $data = $this->request->getPost();
 
 		
 
-		$data['regnumber'] = $this->registrationModel->get_doc_number('registration');
-        $data['fullname'] = ucwords(strtolower($data['fullname']));
-		if (isset($_POST['privileges'])) {
+	// 	$data['regnumber'] = $this->registrationModel->get_doc_number('registration');
+    //     $data['fullname'] = ucwords(strtolower($data['fullname']));
+	// 	if (isset($_POST['privileges'])) {
 
-			$privileges = '';
-			$lastElement = end($data['privileges']);
+	// 		$privileges = '';
+	// 		$lastElement = end($data['privileges']);
 
-			foreach ($data['privileges'] as $privilege) {
-				$privileges .= $privilege;
-				if($privilege != $lastElement) {
-					$privileges .= ', ';
-				}
-			}
+	// 		foreach ($data['privileges'] as $privilege) {
+	// 			$privileges .= $privilege;
+	// 			if($privilege != $lastElement) {
+	// 				$privileges .= ', ';
+	// 			}
+	// 		}
 
-			$data['privileges'] = $privileges;
-		}
+	// 		$data['privileges'] = $privileges;
+	// 	}
 		
-		$insertData = $this->registrationModel->insert_data('tblparticipants',$data);
+	// 	$insertData = $this->registrationModel->insert_data('tblparticipants',$data);
 
-		if ($insertData) {
-			$this->generateQRCode($data['regnumber']);
-			return redirect()->to(base_url('qr-code/'.$data['regnumber'])); 
-		}else{
-			exit();
-		}
+	// 	if ($insertData) {
+	// 		$this->generateQRCode($data['regnumber']);
+	// 		return redirect()->to(base_url('qr-code/'.$data['regnumber'])); 
+	// 	}else{
+	// 		exit();
+	// 	}
 
-    }
+    // }
 
 
 
-    public function generateQRCode($userid)
-	{
-        $ciqrcode = new Ciqrcode();
-		$qr_image=$userid.'.png';
-		$strData = BASE.'/conplan-registration/attendance?regnumber='.$userid;
-		// $strData = $userid;
-		$params['data'] = $strData;
-		$params['level'] = 'H';
-		$params['size'] = 8;
-		$params['savename'] =FCPATH.STORE_QR.$qr_image;
-		$ciqrcode->generate($params);
+    // public function generateQRCode($userid)
+	// {
+    //     $ciqrcode = new Ciqrcode();
+	// 	$qr_image=$userid.'.png';
+	// 	$strData = BASE.'/handa/attendance?regnumber='.$userid;
+	// 	// $strData = $userid;
+	// 	$params['data'] = $strData;
+	// 	$params['level'] = 'H';
+	// 	$params['size'] = 8;
+	// 	$params['savename'] =FCPATH.STORE_QR.$qr_image;
+	// 	$ciqrcode->generate($params);
 
-	}
+	// }
 
-	public function QRCode(){
-		$data['userid'] = $this->request->uri->getSegment(2);
+	// public function QRCode(){
+	// 	$data['userid'] = $this->request->uri->getSegment(2);
 
-		return view('qr-code', $data);
-	}
+	// 	return view('qr-code', $data);
+	// }
 }

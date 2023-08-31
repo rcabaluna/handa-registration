@@ -20,42 +20,42 @@ class Event extends BaseController
         return view('event-register');
     }
 
-    public function searchUser(){
-        $data = [];
-        $param['regnumber'] = $this->request->getGet('regnumber');
+    // public function searchUser(){
+    //     $data = [];
+    //     $param['regnumber'] = $this->request->getGet('regnumber');
 
 
-        $data = $this->eventModel->get_data('tblparticipants',$param);
+    //     $data = $this->eventModel->get_data('tblparticipants',$param);
 
-        if ($data == NULL) {
-            $data = [];
-            $this->session->setFlashdata('invalid',TRUE);
-        }else{
-            $data['eventid'] = $this->request->uri->getSegment(2);
-            $this->session->setFlashdata('valid',TRUE);
-        }
+    //     if ($data == NULL) {
+    //         $data = [];
+    //         $this->session->setFlashdata('invalid',TRUE);
+    //     }else{
+    //         $data['eventid'] = $this->request->uri->getSegment(2);
+    //         $this->session->setFlashdata('valid',TRUE);
+    //     }
 
-        return view('search-user',$data);
-    }
+    //     return view('search-user',$data);
+    // }
 
-    public function attendanceConfirm()
-    {
-        $data = $this->request->getGet();
-        $data['eventid'] = $this->request->uri->getSegment(2);
+    // public function attendanceConfirm()
+    // {
+    //     $data = $this->request->getGet();
+    //     $data['eventid'] = $this->request->uri->getSegment(2);
 
 
-        $insertData = $this->eventModel->insert_data('tblattendance',$data);
+    //     $insertData = $this->eventModel->insert_data('tblattendance',$data);
 
-		if ($insertData) {
-			return redirect()->to(base_url('event/'.$data['eventid'].'/thank-you')); 
-		}else{
-			exit();
-		}
+	// 	if ($insertData) {
+	// 		return redirect()->to(base_url('event/'.$data['eventid'].'/thank-you')); 
+	// 	}else{
+	// 		exit();
+	// 	}
 
-    }
+    // }
 
-    public function thankYou(){
-        return view('thank-you');
-    }
+    // public function thankYou(){
+    //     return view('thank-you');
+    // }
 
 }
