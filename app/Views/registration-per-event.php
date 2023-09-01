@@ -25,15 +25,15 @@
                                                         <?php
                                                     }
                                                    ?>
-                                                    <h3 class="mb-3">Privacy Notice</h3>
-                                                    <p><b>Introduction</b></p>
-                                                    <p class="mb-4">This Privacy Notice details what information we collect, why we collect it, and what we do with it. <br>Before you enter any personal information, please make sure that you have read and fully understood this Notice.</p>
-                                                    <p><b>Data Collection</b></p>
-                                                    <p class="mb-4">The Department of Science and Technology - Region 10 remain committed to fulfilling its mission of providing science, technology, and innovation-based solutions anchored on ethical public service, contributing to a better quality of life in the Region. To this end, it collects data and information, including personal information, from various subjects, which may be used to identify the needs and opportunities in science, technology, and innovation in the Region. These data/information may also be used to improve further our Agency's programs and services.</p>
-                                                    <p><b>Data Use</b></p>
-                                                    <p class="mb-4">This registration form serves as a means to collect information of the participants for production of statistical results.</p>
-                                                    <p><b>List of Data to be Collected</b></p>
-                                                    <p class="mb-4"> 
+                                                    <h3 class="mb-3 text-dark">Privacy Notice</h3>
+                                                    <p class="text-dark"><b>Introduction</b></p>
+                                                    <p class="text-dark mb-4">This Privacy Notice details what information we collect, why we collect it, and what we do with it. <br>Before you enter any personal information, please make sure that you have read and fully understood this Notice.</p>
+                                                    <p class="text-dark"><b>Data Collection</b></p>
+                                                    <p class="text-dark mb-4">The Department of Science and Technology - Region 10 remain committed to fulfilling its mission of providing science, technology, and innovation-based solutions anchored on ethical public service, contributing to a better quality of life in the Region. To this end, it collects data and information, including personal information, from various subjects, which may be used to identify the needs and opportunities in science, technology, and innovation in the Region. These data/information may also be used to improve further our Agency's programs and services.</p>
+                                                    <p class="text-dark"><b>Data Use</b></p>
+                                                    <p class="text-dark mb-4">This registration form serves as a means to collect information of the participants for production of statistical results.</p>
+                                                    <p class="text-dark"><b>List of Data to be Collected</b></p>
+                                                    <p class="text-dark mb-4"> 
                                                         Title
                                                         <br>Complete Name
                                                         <br>Contact Number
@@ -45,8 +45,8 @@
                                                         <br>Sector or Affiliation
                                                         <br>Previleges
                                                     </p>
-                                                    <p><b>Access and Correction</b></p>
-                                                    <p class="mb-4">All information we collect are treated with utmost confidentiality. Only authorized DOST-X personnel have access to the personal information collected. You have the right to ask for a copy of any personal information the DOST-X holds about you, as well as the right to ask for its correction, if found erroneous, or deletion on reasonable grounds.</p>
+                                                    <p class="text-dark"><b>Access and Correction</b></p>
+                                                    <p class="text-dark mb-4">All information we collect are treated with utmost confidentiality. Only authorized DOST-X personnel have access to the personal information collected. You have the right to ask for a copy of any personal information the DOST-X holds about you, as well as the right to ask for its correction, if found erroneous, or deletion on reasonable grounds.</p>
 
                                                     <button class="btn btn-danger float-right custom-class" onclick="show_registration_details()">Next</button>
                                                 </div>
