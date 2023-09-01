@@ -10,17 +10,20 @@ class ParticipantsModel extends Model
     public function get_all_data($tablename){
 
         $builder = $this->db->table($tablename);
-        $builder->orderBy('regnumber','DESC');
         $query   = $builder->get();
 
         return $query->getResultArray();
     }
 
-    public function get_attendance_list($tablename){
+    public function get_participants_list($tablename,$param){
+
 
         $builder = $this->db->table($tablename);
-        $builder->select('tblparticipants.participantid, tblparticipants.regnumber, tblparticipants.fullname, tblparticipants.contactno, tblparticipants.email, tblparticipants.position, tblparticipants.agency_name, tblparticipants.sex, tblparticipants.privileges,tblattendance.date_registered');
-        $builder->join('tblattendance', 'tblattendance.regnumber = tblparticipants.regnumber');
+        $builder->select('*');
+        $builder->join('tblsector', 'tblsector.sectorid = tblparticipants.sector');
+        if ($param['event'] != 'all') {
+            $builder->where($param);
+        }
         $query = $builder->get();
 
         return $query->getResultArray();
