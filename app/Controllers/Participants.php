@@ -15,12 +15,9 @@ class Participants extends BaseController
 
     public function index()
     {
-        $data['participants'] = $this->participantsModel->get_all_data('tblparticipants');
+        $param['event'] = $this->request->getGet('event');
+        $data['events'] = $this->participantsModel->get_all_data('tblevents');
+        $data['participants'] = $this->participantsModel->get_participants_list('tblparticipants',$param);
         return view('participants-list',$data);
-    }
-
-    public function attendanceList(){
-        $data['participants'] = $this->participantsModel->get_attendance_list('tblparticipants');
-        return view('attendance-list',$data);
     }
 }

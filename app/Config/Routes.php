@@ -29,9 +29,15 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+<<<<<<< HEAD
 $routes->get('/handa', 'Registration::index');
 $routes->get('/handa/registration/event/(:any)', 'Registration::event/$1');
 $routes->post('reg-process', 'Registration::registerProccess');
+=======
+$routes->get('/handa', 'Register::index');
+$routes->get('/handa/registration/event/(:any)', 'Registration::event/$1');
+$routes->post('/reg-process', 'Registration::registerProccess');
+>>>>>>> 6e9bef73b37d06af8dc82d55f0bdb4af4b7a76ba
 // $routes->get('/generate-qr-code', 'Register::generateQRCode');
 $routes->get('/qr-code/(:any)', 'Registration::QRCode');
 
@@ -44,7 +50,7 @@ $routes->get('/qr-code/(:any)', 'Registration::QRCode');
 // $routes->get('/attendance', 'Attendance::index');
 // $routes->post('/confirm-attendance', 'Attendance::AttendanceConfirm');        
 
-// $routes->get('/participants', 'Participants::index');
+$routes->get('handa/participants', 'Participants::index');
 // $routes->get('/participants/attendance', 'Participants::attendanceList');        
 
 
