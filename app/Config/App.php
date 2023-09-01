@@ -18,8 +18,8 @@ class App extends BaseConfig
      *    http://example.com/
      */
     // public string $baseURL = 'http://192.168.128.129/conplan/';
-    public string $baseURL = BASE.'/handa-registration/';
-
+    //public string $baseURL = BASE.'/handa-registration/';
+	public string $baseURL = BASE;
     
 
     /**
@@ -45,7 +45,7 @@ class App extends BaseConfig
      * something else. If you are using mod_rewrite to remove the page set this
      * variable so that it is blank.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------

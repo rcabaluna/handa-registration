@@ -23,15 +23,15 @@ class Registration extends BaseController
     public function event()
     {
         $uri = service('uri');
-        $eventshorthand = $uri->getSegment(3);
+        $eventshorthand = $uri->getSegment(4);
 
         $data['eventx'] = $this->registrationModel->get_data_where('tblevents',array('shorthand' => $eventshorthand));
         
         if ($data['eventx']) {
             $data['sectors'] = $this->registrationModel->get_all_data('tblsector');
             return view('registration-per-event',$data);
-        }else{
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(); 
+       }else{
+           throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(); 
         }
     }
 
