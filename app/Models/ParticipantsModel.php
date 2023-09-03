@@ -30,7 +30,12 @@ class ParticipantsModel extends Model
         $query = $builder->get();
 
         return $query->getResultArray();
+    }
 
+    public function delete_participant($tablename,$param){
+        $builder = $this->db->table($tablename);
+        $builder->where($param);
+        $builder->delete();
     }
 
 }

@@ -15,10 +15,21 @@ class Participants extends BaseController
 
     public function index()
     {
-
         $param['event'] = $this->request->getGet('event');
         $data['events'] = $this->participantsModel->get_all_data('tblevents');
         $data['participants'] = $this->participantsModel->get_participants_list('tblparticipants',$param);
         return view('participants-list',$data);
+    }
+
+    public function deleteParticipant(){
+
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+
+        $param['participantid'] = $this->request->getGet('participantid');
+        $this->participantsModel->delete_participant('tblparticipants',$param);
+        
+        if (!empty($previousUrl)) {
+            return redirect()->to($previousUrl);
+        }
     }
 }

@@ -47,6 +47,8 @@ $routes->get('handa/get-provinces-list', 'Registration::getProvincesList');
 // $routes->post('/confirm-attendance', 'Attendance::AttendanceConfirm');        
 
 $routes->get('handa/participants', 'Participants::index');
+$routes->get('handa/participants/delete', 'Participants::deleteParticipant');
+
 // $routes->get('/participants/attendance', 'Participants::attendanceList');        
 
 

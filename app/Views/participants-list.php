@@ -20,7 +20,7 @@
 }   
     </style>
 </head>
-
+<?php $session = session(); ?>
 <body>
     <div class="app">
         <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-color: #f9f9f9;">
@@ -39,6 +39,16 @@
                                                 <a href="<?=base_url('register')?>"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Register"><i class="anticon anticon-user-add"></i></button></a>
                                                 <a href="<?=base_url('handa/participants?event=all')?>"><button class="btn btn-secondary btn-xs active" data-toggle="tooltip" data-placement="top" title="Participants List"><i class="anticon anticon-bars"></i></button></a>
                                             </div>
+                                            <?php
+                                            if(isset($_SESSION['delete'])){
+                                                ?>
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-info">
+                                                        The participant has been deleted successfully!
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }?>
                                             <div class="col-md-3">
                                                 <select class="form-control" id="selevents" onchange="get_participants_by_event()">
                                                     <option value="all">All</option>
@@ -47,6 +57,7 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>
+                                            
                                             <div class="mt-3 col-12">
                                                 <table class="table table-condensed table-responsive" id="participants-table">
                                                     <thead>
@@ -95,7 +106,7 @@
                                                             <td><?=date("M d, Y h:i A",strtotime('+8 hours',strtotime($participantsRow['date_registered'])))?></td>
                                                             <td>
                                                                 <button class="btn btn-primary btn-xs"><i class="anticon anticon-edit"></i></button>
-                                                                <button class="btn btn-danger btn-xs"><i class="anticon anticon-delete"></i></button>
+                                                                <a href="<?=base_url('handa/participants/delete?participantid='.$participantsRow['participantid'])?>"><button class="btn btn-danger btn-xs"><i class="anticon anticon-delete"></i></button></a>
                                                             </td>
                                                         </tr> 
                                                             <?php
