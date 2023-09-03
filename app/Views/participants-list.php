@@ -20,26 +20,35 @@
 }   
     </style>
 </head>
-
+<?php $session = session(); ?>
 <body>
     <div class="app">
         <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-color: #f9f9f9;">
             <div class="d-flex flex-column justify-content-between w-100">
                 <div class="container-fluid d-flex h-100">
-                    <div class="row align-items-center w-100" style="margin-left: 0px;">
+                    <div class="row w-100" style="margin-left: 0px;">
                         <div class="col-md-12 col-lg-12 m-h-auto">
+                            <div class="mt-3 mb-2 col-12">
+                                <h3>Participants List</h3>
+                            </div>
                             <div class="card shadow-lg">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between m-b-30">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <a href="<?=base_url('register')?>"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Register"><i class="anticon anticon-user-add"></i></button></a>
                                                 <a href="<?=base_url('handa/participants?event=all')?>"><button class="btn btn-secondary btn-xs active" data-toggle="tooltip" data-placement="top" title="Participants List"><i class="anticon anticon-bars"></i></button></a>
                                             </div>
-                                            <div class="mt-3 mb-2 col-12">
-                                                <h3>Participants List</h3>
-                                                
-                                            </div>
+                                            <?php
+                                            if(isset($_SESSION['delete'])){
+                                                ?>
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-info">
+                                                        The participant has been deleted successfully!
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }?>
                                             <div class="col-md-3">
                                                 <select class="form-control" id="selevents" onchange="get_participants_by_event()">
                                                     <option value="all">All</option>
@@ -48,6 +57,7 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>
+                                            
                                             <div class="mt-3 col-12">
                                                 <table class="table table-condensed table-responsive" id="participants-table">
                                                     <thead>
@@ -62,6 +72,7 @@
                                                             <th>Email</th>
                                                             <th>Sex</th>
                                                             <th>Address (Region)</th>
+                                                            <th>Address (Province)</th>
                                                             <th>Agency Name</th>
                                                             <th>Position</th>
                                                             <th>Sector/Affiliation</th>
@@ -84,7 +95,8 @@
                                                             <td><?=$participantsRow['contactno']?></td>
                                                             <td><?=$participantsRow['email']?></td>
                                                             <td><?=$participantsRow['sex']?></td>
-                                                            <td><?=$participantsRow['address_region']?></td>
+                                                            <td><?=$participantsRow['regDesc']?></td>
+                                                            <td><?=$participantsRow['provDesc']?></td>
                                                             <td><?=$participantsRow['position']?></td>
                                                             <td><?=$participantsRow['agency_name']?></td>
                                                             <td><?=$participantsRow['sectorname']?></td>
@@ -94,7 +106,7 @@
                                                             <td><?=date("M d, Y h:i A",strtotime('+8 hours',strtotime($participantsRow['date_registered'])))?></td>
                                                             <td>
                                                                 <button class="btn btn-primary btn-xs"><i class="anticon anticon-edit"></i></button>
-                                                                <button class="btn btn-danger btn-xs"><i class="anticon anticon-delete"></i></button>
+                                                                <a href="<?=base_url('handa/participants/delete?participantid='.$participantsRow['participantid'])?>"><button class="btn btn-danger btn-xs"><i class="anticon anticon-delete"></i></button></a>
                                                             </td>
                                                         </tr> 
                                                             <?php

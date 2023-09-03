@@ -26,7 +26,7 @@ class Registration extends BaseController
         $eventshorthand = $uri->getSegment(4);
 
         $data['eventx'] = $this->registrationModel->get_data_where('tblevents',array('shorthand' => $eventshorthand));
-        
+		$data['regions'] = $this->registrationModel->get_all_data('refregion');
         if ($data['eventx']) {
             $data['sectors'] = $this->registrationModel->get_all_data('tblsector');
             return view('registration-per-event',$data);
@@ -34,6 +34,12 @@ class Registration extends BaseController
            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(); 
         }
     }
+
+	public function getProvincesList(){
+
+        $data['provinces'] = $this->registrationModel->get_data_where_all('refprovince',array('regCode' => $this->request->getGet('regCode')));
+		return view('provinces-list', $data);
+	}
 
     public function registerProccess(){
 

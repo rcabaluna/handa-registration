@@ -111,7 +111,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-12">
                                                     <label for="inputEmail4">Sex <small class="text-danger">*</small></label>
                                                     <select class="form-control" name="sex" required>
                                                         <option value=""></option>
@@ -121,26 +121,19 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputEmail4">Address (Region) <small class="text-danger">*</small></label>
-                                                    <select class="form-control" name="address_region" required>
+                                                    <select class="form-control" name="address_region" id="seladdress-region" onchange="get_provinces_list()" required>
                                                         <option value=""></option>
-                                                        <option value="NCR">NCR - National Capital Region</option>
-                                                        <option value="CAR">CAR - Cordillera Administrative Region</option>
-                                                        <option value="Region I">Region I - Ilocos Region</option>
-                                                        <option value="Region II">Region II - Cagayan Valley</option>
-                                                        <option value="Region III">Region III - Central Luzon</option>
-                                                        <option value="Region IVa">Region IV A - CALABARZON</option>
-                                                        <option value="Region IVb">Region IV B - MIMAROPA</option>
-                                                        <option value="Region V">Region V - Bicol Region</option>
-                                                        <option value="Region VI">Region VI - Western Visayas</option>
-                                                        <option value="Region VII">Region VII - Central Visayas</option>
-                                                        <option value="Region VIII">Region VIII - Eastern Visayas</option>
-                                                        <option value="Region IX">Region IX - Zamboanga Peninsula</option>
-                                                        <option value="Region X">Region X - Northern Mindanao</option>
-                                                        <option value="Region XI">Region XI - Davao Region</option>
-                                                        <option value="Region XII">Region XII - Soccsksargen</option>
-                                                        <option value="Region XIII">Region XIII - Caraga</option>
-                                                        <option value="Region BARMM">BARMM - Bangsamoro</option>
-                                                        <option value="Region Foreign">Foreign Delegation</option>
+                                                        <?php foreach ($regions as $regionsRow) {
+                                                            ?>
+                                                            <option value="<?=$regionsRow['regCode']?>"><?=$regionsRow['regDesc']?></option>
+                                                            <?php
+                                                        }?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Address (Province) <small class="text-danger">*</small></label>
+                                                    <select class="form-control" id="seladdress-provinces" name="address_province" required>
+                                                        <option value=""></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -211,6 +204,16 @@
         function show_registration_details(){
             $("#registration-form-container").show();
             $("#privacy-notice-container").hide();
+        }
+
+        function get_provinces_list(){
+            var regCode = $("#seladdress-region").val();
+
+            $.get("<?=base_url('handa/get-provinces-list')?>",{
+                regCode:regCode
+            },function(data){
+                $("#seladdress-provinces").html(data);
+            });
         }
     </script>
 <?= $this->endSection() ?>

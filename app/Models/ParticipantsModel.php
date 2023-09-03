@@ -21,13 +21,21 @@ class ParticipantsModel extends Model
         $builder = $this->db->table($tablename);
         $builder->select('*');
         $builder->join('tblsector', 'tblsector.sectorid = tblparticipants.sector');
-        if ($param['event'] != 'all') {
+        $builder->join('refregion', 'refregion.regCode = tblparticipants.address_region');
+        $builder->join('refprovince', 'refprovince.provCode = tblparticipants.address_province');
+
+        if ($param['event'] != 'all' && $param['event'] != '') {
             $builder->where($param);
         }
         $query = $builder->get();
 
         return $query->getResultArray();
+    }
 
+    public function delete_participant($tablename,$param){
+        $builder = $this->db->table($tablename);
+        $builder->where($param);
+        $builder->delete();
     }
 
 }
