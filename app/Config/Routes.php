@@ -34,6 +34,8 @@ $routes->get('/handa/registration/event/(:any)', 'Registration::event/$1');
 $routes->post('reg-process', 'Registration::registerProccess');
 // $routes->get('/generate-qr-code', 'Register::generateQRCode');
 $routes->get('/qr-code/(:any)', 'Registration::QRCode');
+$routes->get('handa/get-provinces-list', 'Registration::getProvincesList');
+
 
 
 // $routes->get('/event/(:any)', 'Event::index/$1');

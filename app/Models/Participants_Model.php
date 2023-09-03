@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ParticipantsModel;
 
-class Participants extends BaseController
+class Participants_Model extends BaseController
 {
     public $participantsModel;
 

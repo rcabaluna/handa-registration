@@ -59,4 +59,13 @@ class RegistrationModel extends Model
         return $query->getRowArray();
     }
 
+    public function get_data_where_all($tablename,$param){
+
+        $builder = $this->db->table($tablename);
+        $builder->where($param);
+        $query   = $builder->get();
+
+        return $query->getResultArray();
+    }
+
 }
