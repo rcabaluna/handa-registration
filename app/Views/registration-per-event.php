@@ -1,6 +1,11 @@
 <?= $this->extend('templates/main') ?>
 <?= $this->section('content') ?>
 <?php $uri = service('uri'); ?>
+<style>
+    p{
+        color: #2a2a2a !important;
+    }
+</style>
                 <div class="container d-flex h-100 px-0">
                     <div class="row align-items-center w-100" style="margin-left: 0px;">
                         <div class="col-md-12 col-lg-12 m-h-auto">
@@ -13,18 +18,16 @@
                                             </div>
                                             <div id="privacy-notice-container">
                                                 <div class="mt-3 col-12">
-                                                   <?php
-                                                    if ($eventx['shorthand'] != 'general') {
-                                                        ?>
+                                  
                                                          <div id="event-title">
                                                             <h1><b>Title:</b> <?=$eventx['name'];?></h1>
                                                             <h5><b>Venue:</b> <?=$eventx['venue'];?></h5>
                                                             <h5><b>Date and Time:</b> <?=$eventx['datetime'];?></h5>
+                                                            <h5><b>Description:</b></h5>
+                                                            <div style="color: #2a2a2a !important">
+                                                               </div>
                                                             <hr>
                                                         </div>
-                                                        <?php
-                                                    }
-                                                   ?>
                                                     <h3 class="mb-3 text-dark">Privacy Notice</h3>
                                                     <p class="text-dark"><b>Introduction</b></p>
                                                     <p class="text-dark mb-4">This Privacy Notice details what information we collect, why we collect it, and what we do with it. <br>Before you enter any personal information, please make sure that you have read and fully understood this Notice.</p>
