@@ -18,13 +18,8 @@ class App extends BaseConfig
      *    http://example.com/
      */
     // public string $baseURL = 'http://192.168.128.129/conplan/';
-<<<<<<< HEAD
-    //public string $baseURL = BASE.'/handa-registration/';
-	 public string $baseURL = BASE;
-=======
     // public string $baseURL = BASE.'/handa-registration/';
 	public string $baseURL = BASE;
->>>>>>> ba59a81899f0e55ba0ab57dd4304c2657b32ab41
     
 
     /**
