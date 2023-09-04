@@ -1688,3 +1688,211 @@ INFO - 2023-09-04 15:23:51 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2023-09-04 15:25:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-09-04 15:25:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-09-04 15:26:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 16:36:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 16:36:17 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', 'D0$Tregion10', 'conplan', 3306, '', 0)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#8 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#5 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-09-04 16:36:17 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblevents`
+WHERE `shorthand` = :shorthand:', [...], false)
+ 3 APPPATH\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 16:36:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 16:36:19 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', 'D0$Tregion10', 'conplan', 3306, '', 0)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#8 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#5 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-09-04 16:36:19 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblevents`
+WHERE `shorthand` = :shorthand:', [...], false)
+ 3 APPPATH\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 16:36:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 16:36:19 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', 'D0$Tregion10', 'conplan', 3306, '', 0)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#8 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#5 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-09-04 16:36:19 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblevents`
+WHERE `shorthand` = :shorthand:', [...], false)
+ 3 APPPATH\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 16:36:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 16:36:22 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', 'D0$Tregion10', 'conplan', 3306, '', 0)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#8 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\handa-registration\app\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\handa-registration\app\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', Array)
+#5 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-09-04 16:36:22 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblevents`
+WHERE `shorthand` = :shorthand:', [...], false)
+ 3 APPPATH\Models\RegistrationModel.php(57): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Registration.php(28): App\Models\RegistrationModel->get_data_where('tblevents', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Registration->event('general')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registration))
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 16:36:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 16:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 16:37:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 16:37:22 --> mysqli_sql_exception: Table 'conplan.refprovince' doesn't exist in C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\handa-registration\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\handa-registration\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\handa-registration\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\handa-registration\app\Models\ParticipantsModel.php(30): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\handa-registration\app\Controllers\Participants.php(20): App\Models\ParticipantsModel->get_participants_list('tblparticipants', Array)
+#6 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(932): App\Controllers\Participants->index()
+#7 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Participants))
+#8 C:\xampp\htdocs\handa-registration\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\handa-registration\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-09-04 16:37:22 --> Table 'conplan.refprovince' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `tblparticipants`
+JOIN `tblsector` ON `tblsector`.`sectorid` = `tblparticipants`.`sector`
+JOIN `refregion` ON `refregion`.`regCode` = `tblparticipants`.`address_region`
+JOIN `refprovince` ON `refprovince`.`provCode` = `tblparticipants`.`address_province`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tblparticipants`
+JOIN `tblsector` ON `tblsector`.`sectorid` = `tblparticipants`.`sector`
+JOIN `refregion` ON `refregion`.`regCode` = `tblparticipants`.`address_region`
+JOIN `refprovince` ON `refprovince`.`provCode` = `tblparticipants`.`address_province`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tblparticipants`
+JOIN `tblsector` ON `tblsector`.`sectorid` = `tblparticipants`.`sector`
+JOIN `refregion` ON `refregion`.`regCode` = `tblparticipants`.`address_region`
+JOIN `refprovince` ON `refprovince`.`provCode` = `tblparticipants`.`address_province`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblparticipants`
+JOIN `tblsector` ON `tblsector`.`sectorid` = `tblparticipants`.`sector`
+JOIN `refregion` ON `refregion`.`regCode` = `tblparticipants`.`address_region`
+JOIN `refprovince` ON `refprovince`.`provCode` = `tblparticipants`.`address_province`', [], false)
+ 5 APPPATH\Models\ParticipantsModel.php(30): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Participants.php(20): App\Models\ParticipantsModel->get_participants_list('tblparticipants', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Participants->index()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Participants))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 16:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 16:37:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 16:37:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 16:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

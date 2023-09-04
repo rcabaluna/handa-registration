@@ -25,7 +25,7 @@
                                                             <h5><b>Date and Time:</b> <?=$eventx['datetime'];?></h5>
                                                             <h5><b>Description:</b></h5>
                                                             <div style="color: #2a2a2a !important">
-                                                               </div>
+                                                                <?=$eventx['description'];?></div>
                                                             <hr>
                                                         </div>
                                                     <h3 class="mb-3 text-dark">Privacy Notice</h3>
