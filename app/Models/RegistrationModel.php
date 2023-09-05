@@ -29,7 +29,7 @@ class RegistrationModel extends Model
             return $docprefix.date("Y").$prefix.$value;
 
 		}catch (\Exception $e){
-		    die($e->getMessage());
+            die($e->getMessage());
 		}
     }
 
@@ -66,6 +66,50 @@ class RegistrationModel extends Model
         $query   = $builder->get();
 
         return $query->getResultArray();
+    }
+
+    public function check_user_exists($tablename,$param){
+        $builder = $this->db->table($tablename);
+        $builder->where($param);
+        $query   = $builder->get();
+
+        return $query->getRowArray();
+    }
+
+    public function check_user_exists_by_contact($tablename,$param){
+        $builder = $this->db->table($tablename);
+        $builder->orwhere('contactno',$param['contactno']);
+        $builder->orwhere('email',$param['email']);
+        $builder->where('email !=','');
+        $builder->where('contactno !=','');
+        $builder->where('event',$param['event']);
+
+        $query   = $builder->get();
+
+        return $query->getRowArray();
+    }
+
+    public function check_user_exists_by_name($tablename,$param){
+
+        $builder = $this->db->table('tblparticipants');
+
+        // Set the conditions for lastname and firstname
+        $builder->like('lastname',$param['lastname'],'both');
+        $builder->like('firstname',$param['firstname'],'both');
+        $builder->like('middle_initial',$param['middle_initial'],'both');
+        $builder->like('suffix',$param['suffix'],'both');
+        $builder->where('event',$param['event']);
+
+        $builder->groupStart();
+        $builder->where('email', $param['email']);
+        $builder->where('contactno', $param['contactno']);
+        $builder->groupEnd();
+
+       
+
+        $query = $builder->get();
+
+        return $query->getRowArray();
     }
 
 }

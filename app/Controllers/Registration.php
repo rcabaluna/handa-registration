@@ -17,7 +17,7 @@ class Registration extends BaseController
 
     public function index()
     {
-        return view('registration-form');
+        
     }
 
     public function event()
@@ -43,31 +43,40 @@ class Registration extends BaseController
 
     public function registerProccess(){
 
-        $data = $this->request->getPost();
+        $datax = $this->request->getPost('data');
 
-        $data['regnumber'] = $this->registrationModel->get_doc_number('registration');
-		if (isset($_POST['privileges'])) {
-			$privileges = '';
-			$lastElement = end($data['privileges']);
+		$data = array();
+		$privilegesArr = array();
 
-			foreach ($data['privileges'] as $privilege) {
-				$privileges .= $privilege;
-				if($privilege != $lastElement) {
-					$privileges .= ', ';
-				}
+		
+		foreach ($datax AS $key => $value) {
+			$data[$value['name']] = $value['value'];
+
+			if ($value['name'] == 'privileges[]') {
+				array_push($privilegesArr,$value['value']);
+			}
+		}
+
+		unset($data['privileges[]']);
+		$data['privileges'] = implode(", ",$privilegesArr);
+
+			$check = $this->registrationModel->check_user_exists_by_name('tblparticipants',$data);
+			if ($check) {
+				echo "EXISTS";
+				exit();
 			}
 
-			$data['privileges'] = $privileges;
-		}
+        $data['regnumber'] = $this->registrationModel->get_doc_number('registration');
 		
 		$insertData = $this->registrationModel->insert_data('tblparticipants',$data);
 
 		if ($insertData) {
 			$this->generateQRCode($data['event'],$data['regnumber']);
-			return redirect()->to(base_url('qr-code/'.$data['regnumber'])); 
+			echo $data['regnumber'];
 		}else{
 			exit();
 		}
+		
 
     }
 
@@ -78,7 +87,6 @@ class Registration extends BaseController
         $ciqrcode = new Ciqrcode();
 		$qr_image=$userid.'.png';
 		$strData = $event."/".$userid;
-		// $strData = $userid;
 		$params['data'] = $strData;
 		$params['level'] = 'H';
 		$params['size'] = 8;

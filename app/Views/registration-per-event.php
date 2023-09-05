@@ -57,9 +57,10 @@
                                         </div>
                                     </div>
                                     <div class="mt-3" id="registration-form-container">
+                                    <div class="alert alert-danger" id="exists-alert"> You are already registered to this event. Please click <a href="<?=base_url('handa/find-qr');?>">here</a> to check your QR Code. </div>
                                     <h3>Registration Details</h3>
                                     <p class="mb-4">Fill out the form below to register:</p>
-                                        <form method="POST" action="<?=base_url('/reg-process')?>">
+                                        <form id="registration-event-form">
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label class="font-weight-semibold">Title (e.g. Dr., Mr., Mrs.) <small class="text-danger">*</small></label>
@@ -87,7 +88,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <label class="font-weight-semibold">Middle Initial </label>
-                                                    <input type="text" class="form-control" name="Middle Initial" placeholder="Middle Initial">
+                                                    <input type="text" class="form-control" name="middle_initial" placeholder="Middle Initial">
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <label class="font-weight-semibold">Suffix</label>
@@ -142,12 +143,12 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label class="form-label">Agency/Unit/LGU <small class="text-danger">*</small></label>
-                                                    <input type="text" name="agency_name" class="form-control" placeholder="Name of Institution/Agency" required>
+                                                    <label class="form-label">Agency/Unit/LGU</label>
+                                                    <input type="text" name="agency_name" class="form-control" placeholder="Name of Institution/Agency">
                                                 </div>    
                                                 <div class="form-group col-md-6">
-                                                    <label class="form-label">Position <small class="text-danger">*</small></label>
-                                                    <input type="text" name="position" class="form-control" placeholder="Position" required>
+                                                    <label class="form-label">Position</label>
+                                                    <input type="text" name="position" class="form-control" placeholder="Position">
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -182,7 +183,7 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <button class="btn btn-danger custom-class float-right">Register</button>
+                                                    <button type="submit" class="btn btn-danger custom-class float-right">Register</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -202,11 +203,14 @@
     <script>
         $(document).ready(function () {
             $("#registration-form-container").hide();
+            $("#exists-alert").hide();
+
         });
 
         function show_registration_details(){
             $("#registration-form-container").show();
             $("#privacy-notice-container").hide();
+            $(window).scrollTop(0);
         }
 
         function get_provinces_list(){
@@ -216,6 +220,26 @@
                 regCode:regCode
             },function(data){
                 $("#seladdress-provinces").html(data);
+            });
+        }
+
+        $("#registration-event-form").submit(function (e) { 
+
+            registration_process();
+            e.preventDefault();
+            
+        });
+
+        function registration_process(){
+            $.post("<?=base_url('handa/reg-process')?>",{
+                data:$("#registration-event-form").serializeArray()
+            },function(data){
+                if (data == "EXISTS") {
+                    $("#exists-alert").show();
+                    $(window).scrollTop(0);
+                }else{
+                    window.location.href = '<?=base_url('handa/qr-code/')?>'+data;
+                }
             });
         }
     </script>

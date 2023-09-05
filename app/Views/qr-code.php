@@ -1,5 +1,9 @@
 <?= $this->extend('templates/main') ?>
 <?= $this->section('content') ?>
+<?php $uri = service('uri');
+    $userid = $uri->getSegment(3);
+?>
+
     <div class="container d-flex h-100">
         <div class="row align-items-center w-100" style="margin-left: 0px;">
             <div class="col-md-12 col-lg-12 m-h-auto">
@@ -22,6 +26,7 @@
                                 <div class="col-md-12 mt-3 text-center">
                                     <a download="<?=$userid?>.png" href="<?=base_url('uploads/qr/'.$userid)?>.png" target="_blank">
                                         <button class="btn btn-danger custom-class">Download</button>
+                                        
                                     </a>
                                 </div>
                             </div>
