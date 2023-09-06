@@ -76,11 +76,39 @@ class Registration extends BaseController
 		}else{
 			exit();
 		}
-		
-
     }
 
+	public function findQR(){
 
+		return view('find-qr');
+	}
+
+	public function findQRProcess(){
+			$datax = $this->request->getPost('data');
+			$data = [];
+			var_dump($datax);
+			exit();
+
+			foreach ($datax AS $key => $value) {
+				$data[$value['name']] = $value['value'];
+			}	
+
+			//CHECK USING REGISTRATION NUMBER
+			$check = $this->registrationModel->get_data_where('tblparticipants',array('regnumber' => $data['regnumber']));
+			if (!$check) {
+			//CHECK USING INFORMATION
+		
+				$checkByInfo = $this->registrationModel->find_qr_data($data);
+				if ($checkByInfo) {
+					echo json_encode($checkByInfo);
+				}else{
+					echo "EMPTY";
+					exit();
+				}
+			}else{
+				echo json_encode($check);
+			}
+	}
 
     public function generateQRCode($event,$userid)
 	{

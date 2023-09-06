@@ -18,10 +18,23 @@ class AttendanceModel extends Model
     public function get_data($tablename,$param){
 
         $builder = $this->db->table($tablename);
-        $builder->like($param)->orLike('fullname',$param['regnumber']);
+        $builder->select('*');
+        $builder->join('tblsector', 'tblsector.sectorid = tblparticipants.sector');
+        $builder->join('refregion', 'refregion.regCode = tblparticipants.address_region');
+        $builder->join('refprovince', 'refprovince.provCode = tblparticipants.address_province');
+        $builder->join('tblevents', 'tblevents.shorthand = tblparticipants.event');
+        $builder->where($param);
         $query   = $builder->get();
 
         return $query->getRowArray();
     }
 
+    public function get_att_data($tablename,$param){
+
+        $builder = $this->db->table($tablename);
+        $builder->where($param);
+        $query   = $builder->get();
+
+        return $query->getRowArray();
+    }
 }

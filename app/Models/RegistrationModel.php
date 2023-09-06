@@ -76,36 +76,35 @@ class RegistrationModel extends Model
         return $query->getRowArray();
     }
 
-    public function check_user_exists_by_contact($tablename,$param){
-        $builder = $this->db->table($tablename);
-        $builder->orwhere('contactno',$param['contactno']);
-        $builder->orwhere('email',$param['email']);
-        $builder->where('email !=','');
-        $builder->where('contactno !=','');
-        $builder->where('event',$param['event']);
-
-        $query   = $builder->get();
-
-        return $query->getRowArray();
-    }
-
     public function check_user_exists_by_name($tablename,$param){
 
         $builder = $this->db->table('tblparticipants');
 
         // Set the conditions for lastname and firstname
-        $builder->like('lastname',$param['lastname'],'both');
-        $builder->like('firstname',$param['firstname'],'both');
-        $builder->like('middle_initial',$param['middle_initial'],'both');
-        $builder->like('suffix',$param['suffix'],'both');
+        $builder->where('lastname',$param['lastname']);
+        $builder->where('firstname',$param['firstname']);
+        $builder->where('middle_initial',$param['middle_initial']);
+        $builder->where('suffix',$param['suffix'],'both');
         $builder->where('event',$param['event']);
-
-        $builder->groupStart();
         $builder->where('email', $param['email']);
         $builder->where('contactno', $param['contactno']);
-        $builder->groupEnd();
 
-       
+        $query = $builder->get();
+
+        return $query->getRowArray();
+    }
+
+    public function find_qr_data($param){
+
+        $builder = $this->db->table('tblparticipants');
+
+        // Set the conditions for lastname and firstname
+        $builder->where('lastname',$param['lastname']);
+        $builder->where('firstname',$param['firstname']);
+        $builder->where('middle_initial',$param['middle_initial']);
+        $builder->where('suffix',$param['suffix']);
+        $builder->where('email', $param['email']);
+        $builder->where('contactno', $param['contactno']);
 
         $query = $builder->get();
 

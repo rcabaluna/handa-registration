@@ -13,6 +13,8 @@
 
     <!-- Core css -->
     <link href="<?=base_url("assets/css/app.min.css")?>" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+
     <style>
         @media all and (max-width:480px) {
    .custom-class { width: 100%; display:block; }

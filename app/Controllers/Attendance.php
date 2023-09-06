@@ -14,33 +14,38 @@ class Attendance extends BaseController
         $this->attendanceModel = new AttendanceModel();
     }
 
-    public function index()
-    {
-        $data = [];
+    public function AttendanceConfirm(){
+        $input = explode("/",$this->request->getPost('data')); ;
 
-        if ($_GET) {
-            $param['regnumber'] = $this->request->getGet('regnumber');
-    
-    
-            $data = $this->attendanceModel->get_data('tblparticipants',$param);
-    
-            if ($data == NULL) {
-                $data = [];
-                $this->session->setFlashdata('invalid',TRUE);
-            }else{
-                $data['eventid'] = $this->request->uri->getSegment(2);
-                $this->session->setFlashdata('valid',TRUE);
-            }
-        }
-        return view('attendance-form',$data);
+        $data['event'] =  $input[0];
+        $data['regnumber'] = $input[1];       
+        $profile = $this->attendanceModel->get_data('tblparticipants',array('regnumber' => $data['regnumber']));
+
+        return view("attendance/profile",$profile);
+
     }
 
-    public function AttendanceConfirm(){
-        $data['regnumber'] = $this->request->getPost('regnumber');
+    public function AttendanceSave(){
+        $input = explode("/",$this->request->getPost('data')); ;
 
-        $insert = $this->attendanceModel->insert_data('tblattendance',$data);
+        $data['event'] =  $input[0];
+        $data['regnumber'] = $input[1];
 
-        return view('thank-you');
+        $check = $this->attendanceModel->get_att_data('tblattendance',$data);
+
+        if ($check) {
+            echo "EXISTS";
+            exit();
+        }else{
+            $insert = $this->attendanceModel->insert_data('tblattendance',$data);
+            if ($insert) {
+                echo "SUCCESS";
+            }
+        }
+    }
+
+    public function scanQRCode(){
+        return view('attendance/scan-qr-code');
     }
     
 }
