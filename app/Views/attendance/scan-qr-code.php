@@ -8,7 +8,7 @@
                     <div class="align-items-center justify-content-between m-b-30">
                         <div class="row">
                             <div class="mt-3 col-12">
-                                <h1>HANDA - Attendance QR Testing</h1>
+                                <h1 class="text-center">HANDA - QR Code Attendance Scanner</h1>
                                 <p class="text-dark">Please scan QR Code:</p>
                                 <div class="alert alert-success" id="alert-success">
                                   Attendance confirmation has been registered successfully.
