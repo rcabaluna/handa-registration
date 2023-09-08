@@ -1,40 +1,38 @@
 <?= $this->extend('templates/main-admin') ?>
 <?= $this->section('content') ?>
-<div class="container d-flex h-100">
-    <div class="row align-items-center w-100" style="margin-left: 0px;">
-        <div class="col-md-12 col-lg-12 m-h-auto">
-            <div class="card shadow-lg">
-                <div class="card-body">
-                    <div class="align-items-center justify-content-between m-b-30">
-                        <div class="row">
-                            <div class="mt-3 col-12">
-                                <h1 class="text-center">HANDA - QR Code Attendance Scanner</h1>
-                                <p class="text-dark">Please scan QR Code:</p>
-                                <div class="alert alert-success" id="alert-success">
-                                  Attendance confirmation has been registered successfully.
-                                </div>
-                                <div class="alert alert-warning" id="alert-exists">
-                                  Attendance data already exists!
-                                </div>
-                            </div>
-                            <!-- <div class="col-md-12">
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <select class="form-control" id="selcameras" onchange="change_camera()"></select>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="col-md-12">
-                              <video id="preview" class="w-100"></video>
-                            </div>
+<div class="main-content">
+  <div class="card shadow-lg">
+    <div class="card-body">
+        <div class="align-items-center justify-content-between m-b-30">
+            <div class="row">
+                <div class="mt-3 col-12">
+                    <h5 class="text-center"><?=$pagetitle?></h5>
+                    <p class="text-dark text-center">Please scan QR Code:</p>
+                    <div class="alert alert-success" id="alert-success">
+                      Attendance confirmation has been registered successfully.
+                    </div>
+                    <div class="alert alert-warning" id="alert-exists">
+                      Attendance data already exists!
+                    </div>
+                    <div class="alert alert-danger" id="alert-invalid">
+                      Invalid QR code!
+                    </div>
+                </div>
+                <!-- <div class="col-md-12">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <select class="form-control" id="selcameras" onchange="change_camera()"></select>
                         </div>
                     </div>
+                </div> -->
+                <div class="col-md-12">
+                  <video id="preview" class="w-100"></video>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade bd-example-modal-lg" id="profile-modal">
+  </div>
+  <div class="modal fade bd-example-modal-lg" id="profile-modal">
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -53,8 +51,8 @@
           </div>
       </div>
     </div>
+  </div>
 </div>
-
 
     <script type="text/javascript">
 
@@ -65,6 +63,9 @@
       $(document).ready(function () {
         $("#alert-success").hide();
         $("#alert-exists").hide();
+        $("#alert-invalid").hide();
+        $("#ul-two").addClass("open");
+        $("#li-food-scanner").addClass("active");
 
         start_camera();
       });
@@ -79,8 +80,16 @@
         $.post("<?=base_url('handa/confirm-attendance')?>",{
           data: content
         },function(data){
-          $("#profile-modal-body").html(data);
-          $("#profile-modal").modal("show");
+          if(data == "INVALID"){
+            $("#alert-exists").hide();
+            $("#alert-invalid").show().delay(3000).fadeOut();
+          }else if(data == "EXISTS"){
+            $("#alert-invalid").hide();
+            $("#alert-exists").show().delay(3000).fadeOut();
+          }else{
+            $("#profile-modal-body").html(data);
+            $("#profile-modal").modal("show");
+          }
         });
       }
 
@@ -113,10 +122,6 @@
             $("#profile-modal-body").html();
             $("#profile-modal").modal("hide");
             $("#alert-success").show().delay(3000).fadeOut();
-          }else if(data == "EXISTS"){
-            $("#profile-modal-body").html();
-            $("#profile-modal").modal("hide");
-            $("#alert-exists").show().delay(3000).fadeOut();
           }
         });
       }

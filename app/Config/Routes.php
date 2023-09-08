@@ -11,7 +11,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Registration');
+$routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -29,36 +29,27 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/handa', 'Registration::index');
+$routes->get('handa/','Home::index');
 $routes->get('/handa/registration/event/(:any)', 'Registration::event/$1');
 $routes->post('handa/reg-process', 'Registration::registerProccess');
 // $routes->get('/generate-qr-code', 'Register::generateQRCode');
 $routes->get('handa/qr-code/(:any)', 'Registration::QRCode');
 $routes->get('handa/find-qr', 'Registration::findQR');
 $routes->post('handa/find-qr-process', 'Registration::findQRProcess');
-$routes->get('handa/get-provinces-list', 'Registration::getProvincesList');
+$routes->get('handa/get-provinces-list', 'Registration::getProvincesList',['filter' => 'authGuard']);
 
+$routes->get('handa/participants', 'Participants::index',['filter' => 'authGuard']);
+$routes->get('handa/participants/delete', 'Participants::deleteParticipant',['filter' => 'authGuard']);
 
+$routes->get('handa/attendance', 'Attendance::index',['filter' => 'authGuard']);
+$routes->get('handa/81525e75be630cc750ea7beeb81f2de1', 'Attendance::scanQRCode',['filter' => 'authGuard']);
+$routes->post('handa/confirm-attendance', 'Attendance::AttendanceConfirm',['filter' => 'authGuard']);     
+$routes->post('handa/save-attendance', 'Attendance::AttendanceSave',['filter' => 'authGuard']);     
 
-// $routes->get('/event/(:any)', 'Event::index/$1');
-// $routes->get('/event/(:num)/search', `'Event::searchUser/$1');
-// $routes->get('/event/(:num)/confirm', 'Event::attendanceConfirm/$1');
-// $routes->get('/event/(:num)/thank-you', 'Event::thankYou/$1');
+$routes->get('handa/admin/dashboard','Dashboard::index',['filter' => 'authGuard']);
 
-// $routes->get('/attendance', 'Attendance::index');
-$routes->post('handa/confirm-attendance', 'Attendance::AttendanceConfirm');     
-$routes->post('handa/save-attendance', 'Attendance::AttendanceSave');     
-
-
-
-$routes->get('handa/participants', 'Participants::index');
-$routes->get('handa/participants/delete', 'Participants::deleteParticipant');
-
-// $routes->get('/participants/attendance', 'Participants::attendanceList');        
-
-$routes->get('handa/81525e75be630cc750ea7beeb81f2de1', 'Attendance::scanQRCode');
-
-
+$routes->match(['get','post'],'handa/login','Home::login');
+$routes->match(['get','post'],'handa/logout','Home::logout');
 
 /*
  * --------------------------------------------------------------------

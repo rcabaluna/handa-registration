@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => 'D0$Tregion10',
+        'password' => '',
         'database' => 'conplan',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',

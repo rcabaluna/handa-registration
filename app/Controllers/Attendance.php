@@ -14,14 +14,36 @@ class Attendance extends BaseController
         $this->attendanceModel = new AttendanceModel();
     }
 
+    public function index(){
+        $data['pagetitle'] = "HANDA 2023 - Attendance List";
+        $param['event'] = $this->request->getGet('event');
+        $data['events'] = $this->attendanceModel->get_all_data('tblevents');
+        $data['attendance'] = $this->attendanceModel->get_attendance_list('tblattendance',$param);
+        return view('attendance/attendance-list',$data);
+    }
+
     public function AttendanceConfirm(){
         $input = explode("/",$this->request->getPost('data')); ;
 
         $data['event'] =  $input[0];
         $data['regnumber'] = $input[1];       
+
+        # Check if QR is valid or invalid
         $profile = $this->attendanceModel->get_data('tblparticipants',array('regnumber' => $data['regnumber']));
 
-        return view("attendance/profile",$profile);
+        if ($profile) {
+            # Check if attendance data already exists
+            $check = $this->attendanceModel->get_att_data('tblattendance',$data);
+            if ($check) {
+                echo "EXISTS";
+                exit();
+            }else{
+                return view("attendance/profile",$profile);
+            }
+        }else{
+            echo "INVALID";
+        }
+
 
     }
 
@@ -45,7 +67,10 @@ class Attendance extends BaseController
     }
 
     public function scanQRCode(){
-        return view('attendance/scan-qr-code');
+        $data['pagetitle'] = 'HANDA 2023 - Attendance QR Scanner';
+        return view('attendance/scan-qr-code',$data);
     }
+
+    
     
 }
