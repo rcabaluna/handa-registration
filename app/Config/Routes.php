@@ -36,7 +36,7 @@ $routes->post('handa/reg-process', 'Registration::registerProccess');
 $routes->get('handa/qr-code/(:any)', 'Registration::QRCode');
 $routes->get('handa/find-qr', 'Registration::findQR');
 $routes->post('handa/find-qr-process', 'Registration::findQRProcess');
-$routes->get('handa/get-provinces-list', 'Registration::getProvincesList',['filter' => 'authGuard']);
+$routes->get('handa/get-provinces-list', 'Registration::getProvincesList');
 
 $routes->get('handa/participants', 'Participants::index',['filter' => 'authGuard']);
 $routes->get('handa/participants/delete', 'Participants::deleteParticipant',['filter' => 'authGuard']);

@@ -39,8 +39,8 @@
         <header id="header" class="d-flex align-items-center">
             <div class="container-fluid container-xxl d-flex align-items-center">
                 <div id="logo" class="me-auto">
-                    <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
-                    <a href="index.html" id="nav-logox" class="scrollto"><img src="<?=base_url('assets2/img/logo.png') ?>" alt="" title="" /></a>
+                    <!-- <h1><a href="<?=base_url('/handa')?>">The<span>Event</span></a></h1>-->
+                    <a href="<?=base_url('/handa')?>" id="nav-logox" class="scrollto"><img src="<?=base_url('assets2/img/logo.png') ?>" alt="" title="" /></a>
                 </div>
 
                 <nav id="navbar" class="navbar order-last order-lg-0">
@@ -62,7 +62,7 @@
         <section id="hero">
             <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
             <div class="supporter-logo">
-                                <img src="http://localhost/handa-registration/assets2/img/logo-head.png" class="img-fluid" alt="">
+                                <img src="<?=base_url('assets2/img/logo-head.png')?>" class="img-fluid" alt="">
                             </div>
                 <p class="mb-4 pb-0 font-weight-slim">October 4-6, 2023, Limketkai Center, Cagayan de Oro City</p>
                 <a href="<?=base_url('assets2/img/handa-teaser.mp4')?>" class="glightbox play-btn mb-4"></a>
@@ -372,7 +372,7 @@ Cagayan de Oro City</div>
 
                     <div class="row g-0">
                         <div class="col-lg-6 venue-map">
-                            <img src="<?=base_url('assets2/img/map.png')?>" alt="">
+                            <img class="w-100" src="<?=base_url('assets2/img/map.png')?>" alt="">
                         </div>
 
                         <div class="col-lg-6 venue-info">

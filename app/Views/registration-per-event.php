@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-3" id="registration-form-container">
-                                    <div class="alert alert-danger" id="exists-alert"> You are already registered to this event. Please click <a href="<?=base_url('handa/find-qr');?>">here</a> to check your QR Code. </div>
+                                    <div class="alert alert-danger" id="exists-alert"> You are already registered to this event. </div>
                                     <h3>Registration Details</h3>
                                     <p class="mb-4">Fill out the form below to register:</p>
                                         <form id="registration-event-form">

@@ -71,12 +71,12 @@
 
     
     <!-- Core Vendors JS -->
-    <script src="assets/js/vendors.min.js"></script>
+    <script src="<?=base_url('assets/js/vendors.min.js');?>"></script>
 
     <!-- page js -->
 
     <!-- Core JS -->
-    <script src="assets/js/app.min.js"></script>
+    <script src="<?=base_url('assets/js/app.min.js'); ?>"></script>
 
 </body>
 

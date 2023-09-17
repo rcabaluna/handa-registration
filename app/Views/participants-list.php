@@ -33,7 +33,7 @@
                 <table class="table table-condensed table-responsive" id="participants-table">
                     <thead>
                         <tr>
-                            <th>No.</th>
+                          
                             <th>Registration No.</th>
                             <th>Title</th>
                             <th>Name</th>
@@ -54,7 +54,7 @@
                         <?php $count=0; foreach ($participants as $participantsRow) {
                                             ?>
                         <tr>
-                            <td><?=$count+=1?></td>
+                            
                             <td><?=$participantsRow['regnumber']?></td>
                             <td><?=$participantsRow['title']?></td>
                             <td><?php
@@ -104,7 +104,8 @@
 
         });
         $('#participants-table').DataTable({
-            responsive: true,
+            order:[[0, 'desc']],
+		responsive: true,
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
